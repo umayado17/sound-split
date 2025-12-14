@@ -134,13 +134,13 @@ async def split_audio(file: UploadFile = File(...)):
             # zipファイルのサイズを確認
             zip_size_mb = len(zip_buffer.getvalue()) / (1024 * 1024)
             
-            if zip_size_mb > MAX_FILE_SIZE_MB:
+            #if zip_size_mb > MAX_FILE_SIZE_MB:
                 # zipファイルが32MBを超える場合は警告を返す
                 # ただし、Cloud Runのレスポンスサイズ制限（32MB）を考慮
-                raise HTTPException(
-                    status_code=413,
-                    detail=f"分割後のzipファイルサイズ（{zip_size_mb:.2f}MB）が32MBを超えています。"
-                )
+                #raise HTTPException(
+                    #status_code=413,
+                    #detail=f"分割後のzipファイルサイズ（{zip_size_mb:.2f}MB）が32MBを超えています。"
+                #)
             
             # レスポンスを返す
             return StreamingResponse(
